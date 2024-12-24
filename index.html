@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Navbar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Navigation Styles */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #131e31;
+      color: rgb(255, 255, 255);
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+
+    .brand-name {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color:white;
+    }
+
+    .search-bar {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      
+    }
+
+    .search-bar input {
+      width: 70%;
+      max-width: 500px;
+      padding: 0.7rem;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      outline: none;
+      transition: box-shadow 0.3s;
+    }
+
+    .search-bar input:focus {
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-icon {
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 1.5rem;
+      color: rgb(255, 255, 255);
+    }
+
+    .nav-icons i {
+      cursor: pointer;
+    }
+
+    
+   
+
+
+    /* Scrollable Section for Categories */
+    .categories-section {
+      margin-top: -100px;
+      padding: 3rem;
+      display: flex;
+      position: relative;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      
+    }
+
+    .categories-section::-webkit-scrollbar {
+      display: none;
+    }
+    .category-container {
+      flex: 0 0 auto;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      width: 200px;
+      height: 250px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .category-container .icon {
+      background: #0a111d;
+      color: #fff;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      margin-top: 20px;
+    }
+
+    .category-container p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    .category-container .view-btn {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: rgb(255, 251, 251);
+      background: #0a111d;
+      width: 100px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      padding: 10px;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+
+    .category-container .view-btn i {
+      font-size: 1rem;
+    }
+
+    /* Mobile-specific adjustments */
+    @media (max-width: 768px) {
+      .search-bar {
+        display: none;
+      }
+
+      .search-icon-only {
+        display: inline-block;
+      }
+
+     
+
+      .categories-section {
+        padding: 1rem;
+        margin-top: -80px;
+      }
+   
+      .category-container {
+        width: 150px;
+      }
+    }
+
+    /* Search Page (Mobile Toggle) */
+    .search-page {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f9f9f9;
+      z-index: 1001;
+      padding: 2rem;
+    }
+
+    .search-page.active {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .search-page .back-icon {
+      align-self: flex-start;
+      cursor: pointer; 
+    }
+    /* Mobile-specific adjustments */
+@media (min-width: 768px) {
+  .search-icon-only {
+    display: none; /* Hides the search icon on desktop */
+  }
+}
+
+.menu-icon {
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 60px; /* Adjust to match your nav height */
+  right: 20px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 15px;
+  display: none; /* Initially hidden */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #fff;
+  border-bottom: 1px solid #333;
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #444;
+  color: #fff;
+}
+.hero-container {
+      width: 100%;
+     
+      max-height: 500px; /* Restrict for large desktops */
+      min-height: 300px; /* Ensure height on small screens */
+      position: relative;
+      background-image: url('images/10.0.jpg');
+      color: white;
+      padding: 20px;
+      display: flex;
+      margin-top: 60px;
+      flex-direction: column;
+      align-items: center;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+     
+    }
+  
+   
+
+
+    .hero-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .hero-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 90%;
+      
+      max-width: 1200px;
+    }
+
+    .container {
+      background: #0a111d;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      height: 100px;
+      font-weight: bold;
+      transition: transform 0.3s ease, background 0.3s ease;
+    
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .container i {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+      background: #555;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-section {
+        grid-template-columns: repeat(3, 1fr); /* 3 on smaller screens */
+     
+      }
+
+      .container {
+        font-size: 0.75rem;
+      
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 even on tiny screens */
+        gap: 8px;
+      }
+
+      .container {
+        font-size: 0.7rem;
+        padding: 8px;
+      }
+
+      .container i {
+        font-size: 1rem;
+      }
+    }
+    .blurred-line {
+  width: 100%; /* Full width */
+  height: 2px; /* Thin line */
+  background: rgb(194, 193, 193); /* Light black color with transparency */
+  margin: 20px 0; /* Spacing around the line */
+}
+
+/* General Styling */
+
+
+.title {
+  text-align: center;
+  font-size: 2em;
+  font-weight: 600;
+  color: #1d3557;
+  margin-bottom: 30px;
+}
+
+.featured-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featured-cards-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  max-width: calc(33% - 20px); /* Three cards in a row */
+  margin: 10px 0;
+  overflow: hidden;
+  position: relative;
+  padding: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+}
+
+.circle-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.info .brand-name {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2b2d42;
+}
+
+.info .details {
+  font-size: 0.9em;
+  color: #606874;
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.info .details i {
+  color: #1d3557;
+  margin-right: 8px;
+}
+
+.info .owner {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #495057;
+  display: flex;
+  align-items: center;
+}
+
+.info .owner i {
+  color: #457b9d;
+  margin-right: 8px;
+}
+
+/* Eye Icon Styling */
+.eye-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(30, 64, 175, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.eye-icon i {
+  color: #fff;
+  font-size: 1.2em;
+}
+
+.eye-icon:hover {
+  background-color: rgba(30, 64, 175, 1);
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .featured-cards-container {
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="brand-name"> <div class="nav-icons"><i style="font-style: bold;" data-feather="wifi"></i>CONNECT</div></div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <i data-feather="search" class="search-icon"></i>
+    </div>
+    <div class="nav-icons">
+      <i data-feather="user"></i>
+      <i data-feather="menu" class="menu-icon"></i>
+      <i data-feather="search" class="search-icon-only"></i>
+    </div>
+    <div class="dropdown-menu">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-container">
+   
+    <div class="hero-section">
+      <!-- Hero Containers -->
+      <a href="#about-us" class="container">
+        <i data-feather="info"></i>
+        About Us
+      </a>
+      <a href="#all-categories" class="container">
+        <i data-feather="list"></i>
+        All Categories
+      </a>
+      <a href="#contact-us" class="container">
+        <i data-feather="phone"></i>
+        Contact Us
+      </a>
+      <a href="#brands" class="container">
+        <i data-feather="tag"></i>
+        Brands
+      </a>
+      <a href="#ads-marketing" class="container">
+        <i data-feather="bar-chart"></i>
+        Ads & Marketing
+      </a>
+      <a href="#start-business" class="container">
+        <i data-feather="briefcase"></i>
+        Start Business
+      </a>
+    </div>
+  </div>
+
+  <!-- Scrollable Section for Categories -->
+  <section class="categories-section">
+    <div class="category-container">
+      <div class="icon"><i data-feather="shopping-bag"></i></div>
+      <p>Fashion</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+    <div class="category-container">
+      <div class="icon"><i data-feather="coffee"></i></div>
+      <p>Food items</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+    <div class="category-container">
+      <div class="icon"><i data-feather="phone"></i></div>
+      <p>Gadgets</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+    <div class="category-container">
+      <div class="icon"><i data-feather="table"></i></div>
+      <p>Home items</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+    <div class="category-container">
+      <div class="icon"><i data-feather="home"></i></div>
+      <p>Skin care</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+    <div class="category-container">
+      <div class="icon"><i data-feather="tool"></i></div>
+      <p>Tools</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+    <div class="category-container">
+      <div class="icon"><i data-feather="shopping-bag"></i></div>
+      <p>Fashion</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+    <div class="category-container">
+      <div class="icon"><i data-feather="coffee"></i></div>
+      <p>Food items</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+    <div class="category-container">
+      <div class="icon"><i data-feather="phone"></i></div>
+      <p>Gadgets</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+    <div class="category-container">
+      <div class="icon"><i data-feather="table"></i></div>
+      <p>Home items</p>
+      <a class="view-btn">
+        <i data-feather="eye"></i> View
+      </a>
+    </div>
+  </section>
+  <div class="blurred-line"></div>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="featured-section">
+  <h2 class="title">Featured</h2>
+  <div class="featured-cards-container">
+    <div class="card">
+      <div class="eye-icon">
+        <i class="fas fa-eye"></i>
+      </div>
+      <div class="card-content">
+        <img src="circle-image-1.jpg" alt="Brand Logo" class="circle-image">
+        <div class="info">
+          <h3 class="brand-name">Brand One</h3>
+          <p class="details"><i class="fas fa-tag"></i> Fashion</p>
+          <p class="details"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
+          <p class="owner"><i class="fas fa-user-circle"></i> Jane Doe</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="eye-icon">
+        <i class="fas fa-eye"></i>
+      </div>
+      <div class="card-content">
+        <img src="circle-image-2.jpg" alt="Brand Logo" class="circle-image">
+        <div class="info">
+          <h3 class="brand-name">Brand Two</h3>
+          <p class="details"><i class="fas fa-tag"></i> Electronics</p>
+          <p class="details"><i class="fas fa-map-marker-alt"></i> Abuja, Nigeria</p>
+          <p class="owner"><i class="fas fa-user-circle"></i> John Smith</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="eye-icon">
+        <i class="fas fa-eye"></i>
+      </div>
+      <div class="card-content">
+        <img src="circle-image-3.jpg" alt="Brand Logo" class="circle-image">
+        <div class="info">
+          <h3 class="brand-name">Brand Three</h3>
+          <p class="details"><i class="fas fa-tag"></i> Food</p>
+          <p class="details"><i class="fas fa-map-marker-alt"></i> Port Harcourt, Nigeria</p>
+          <p class="owner"><i class="fas fa-user-circle"></i> Sarah Connor</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script>
+    feather.replace();
+
+    const searchIconOnly = document.querySelector('.search-icon-only');
+    const searchPage = document.querySelector('.search-page');
+    const backIcon = document.querySelector('.back-icon');
+
+    searchIconOnly.addEventListener('click', () => {
+      searchPage.classList.add('active');
+    });
+
+    backIcon.addEventListener('click', () => {
+      searchPage.classList.remove('active');
+    });
+  </script>
+  <script>
+    // Selecting the menu icon and dropdown menu
+const menuIcon = document.querySelector('.menu-icon');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+
+// Toggle dropdown menu on click
+menuIcon.addEventListener('click', () => {
+  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+// Feather icons
+feather.replace();
+
+  </script>
+</body>
+</html>
