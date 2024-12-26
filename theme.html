@@ -3,200 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compact Hero Section</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="index.html"></script>
+  <title>Compact Bottom Navigation</title>
   <style>
-/* General Styling */
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f9f9fb;
-  color: #343a40;
-  margin: 0;
-  padding: 20px;
-}
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f9f9fc;
+    }
 
-.title {
-  text-align: center;
-  font-size: 2em;
-  font-weight: 600;
-  color: #1d3557;
-  margin-bottom: 30px;
-}
+    .bottom-navigation {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      background: #ffffff;
+      height: 60px;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      border-top: 1px solid #ddd;
+    }
 
-.featured-section {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-.container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+    .nav-item svg {
+      width: 22px;
+      height: 22px;
+      margin-bottom: 4px;
+      transition: transform 0.2s ease;
+    }
 
-.card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  flex: 1;
-  max-width: calc(33% - 20px); /* Three cards in a row */
-  margin: 10px 0;
-  overflow: hidden;
-  position: relative;
-  padding: 16px;
-  transition: all 0.3s ease-in-out;
-}
+    .nav-item.active {
+      color: #1a73e8;
+    }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
+    .nav-item.active svg {
+      transform: scale(1.1);
+      color: #1a73e8;
+    }
 
-.card-content {
-  display: flex;
-  align-items: center;
-}
+    .nav-item:hover {
+      color: #1a73e8;
+    }
 
-.circle-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 16px;
-}
+    /* Adjusted layout for mobile */
+    @media (max-width: 768px) {
+      .nav-item svg {
+        width: 20px;
+        height: 20px;
+      }
 
-.info .brand-name {
-  font-size: 1.2em;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #2b2d42;
-}
+      .bottom-navigation {
+        justify-content: space-around;
+      }
+    }
 
-.info .details {
-  font-size: 0.9em;
-  color: #606874;
-  display: flex;
-  align-items: center;
-  margin: 4px 0;
-}
+    /* Adjusted layout for desktops */
+    @media (min-width: 769px) {
+      .bottom-navigation {
+        max-width: 400px;
+        margin: 0 auto;
+        border-radius: 10px;
+      }
+    }
 
-.info .details i {
-  color: #1d3557;
-  margin-right: 8px;
-}
-
-.info .owner {
-  font-size: 0.9em;
-  font-weight: 500;
-  color: #495057;
-  display: flex;
-  align-items: center;
-}
-
-.info .owner i {
-  color: #457b9d;
-  margin-right: 8px;
-}
-
-/* Eye Icon Styling */
-.eye-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(30, 64, 175, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.2s;
-}
-
-.eye-icon i {
-  color: #fff;
-  font-size: 1.2em;
-}
-
-.eye-icon:hover {
-  background-color: rgba(30, 64, 175, 1);
-  transform: scale(1.1);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Stack cards vertically on smaller screens */
-  }
-
-  .card {
-    max-width: 100%;
-  }
-}
-
-
-  
+    /* Add spacing to content so it's above the nav bar */
+    .content {
+      padding-bottom: 80px;
+      text-align: center;
+    }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 <body>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <div class="featured-section">
-    <h2 class="title">Featured</h2>
-    <div class="container">
-      <div class="card">
-        <div class="eye-icon">
-          <i class="fas fa-eye"></i>
-        </div>
-        <div class="card-content">
-          <img src="circle-image-1.jpg" alt="Brand Logo" class="circle-image">
-          <div class="info">
-            <h3 class="brand-name">Brand One</h3>
-            <p class="details"><i class="fas fa-tag"></i> Fashion</p>
-            <p class="details"><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
-            <p class="owner"><i class="fas fa-user-circle"></i> Jane Doe</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="eye-icon">
-          <i class="fas fa-eye"></i>
-        </div>
-        <div class="card-content">
-          <img src="circle-image-2.jpg" alt="Brand Logo" class="circle-image">
-          <div class="info">
-            <h3 class="brand-name">Brand Two</h3>
-            <p class="details"><i class="fas fa-tag"></i> Electronics</p>
-            <p class="details"><i class="fas fa-map-marker-alt"></i> Abuja, Nigeria</p>
-            <p class="owner"><i class="fas fa-user-circle"></i> John Smith</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="eye-icon">
-          <i class="fas fa-eye"></i>
-        </div>
-        <div class="card-content">
-          <img src="circle-image-3.jpg" alt="Brand Logo" class="circle-image">
-          <div class="info">
-            <h3 class="brand-name">Brand Three</h3>
-            <p class="details"><i class="fas fa-tag"></i> Food</p>
-            <p class="details"><i class="fas fa-map-marker-alt"></i> Port Harcourt, Nigeria</p>
-            <p class="owner"><i class="fas fa-user-circle"></i> Sarah Connor</p>
-          </div>
-        </div>
-      </div>
-    </div>
+
+  <div class="content">
+    <h1>Welcome!</h1>
+    <p>Scroll down to see the compact bottom navigation bar in action.</p>
   </div>
-  
-    
+
+  <div class="bottom-navigation">
+    <a href="#" class="nav-item active">
+      <i data-feather="home"></i>
+      <span>Home</span>
+    </a>
+    <a href="#" class="nav-item">
+      <i data-feather="search"></i>
+      <span>Search</span>
+    </a>
+    <a href="#" class="nav-item">
+      <i data-feather="heart"></i>
+      <span>Favorites</span>
+    </a>
+    <a href="#" class="nav-item">
+      <i data-feather="user"></i>
+      <span>Profile</span>
+    </a>
+  </div>
+
   <script>
-    // Initialize Feather Icons
+    // Activate Feather Icons
     feather.replace();
   </script>
+
 </body>
 </html>
