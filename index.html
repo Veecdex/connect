@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modern Navbar</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
@@ -316,7 +317,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin-top: 120px;
+  margin-top: 50px;
   justify-content: center;
 }
 .card {
@@ -542,6 +543,150 @@
       padding-bottom: 80px;
       text-align: center;
     }
+    .herocontainer {
+      display: flex;
+      justify-content: space-between;
+      padding: 30px;
+      margin-top: 130px;
+      background-image: url('images/bkg.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-left: 10px;
+      margin-right: 10px;
+      background-color: #0a111d;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
+     
+    }
+
+    /* Left Container (Text and Buttons) */
+    .left {
+      flex: 1 1 45%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .left h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgb(255, 255, 255);
+      margin: 0;
+    }
+
+    .left p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgb(235, 235, 235);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: flex-start;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background-color: #0a111d;
+      font-size: 1rem;
+      border: 1px solid;
+      font-weight: 500;
+      color: rgb(251, 250, 250);
+      border-color: rgb(255, 255, 255);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn.create {
+      background-color: white;
+      border: 1px;
+      border-style: solid;
+      color: #333;
+      border-color: #0a111d;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn.create:hover {
+      background-color: #0a111d;
+      color: rgb(255, 255, 255);
+    }
+
+    /* Right Container (Search Bar) */
+    .right {
+      flex: 1 1 40%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+  
+    /* Responsive Design for Mobile */
+    @media (max-width: 768px) {
+      .herocontainer {
+        flex-direction: column;
+        padding: 15px;
+      
+      }
+
+      .left {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 80%;
+        padding: 12px 0;
+        font-size: 1rem;
+        justify-content: center;
+      }
+
+      .right {
+        margin-top: 20px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .search-bar {
+        margin: 0 auto;
+      }
+     .headbusiness{
+        font-size: 2px;
+      }
+    }
+
+  /* Responsive styling for <h2> on mobile */
+  @media (max-width: 768px) {
+    .left h2 {
+      font-size: 25px;
+      font-weight: 400;
+      color: rgb(253, 253, 253);
+      margin: 0;
+    }
+    .himg{
+      display: none;
+    }
+  }
+  .himg{
+    height: 300px;
+    width: 500px;
+    background-image: url('images/10.0.jpg');
+  }
+    
   </style>
   
 </head>
@@ -554,8 +699,7 @@
       <i data-feather="search" class="search-icon"></i>
     </div>
     <div class="nav-icons">
-      <i data-feather="user"></i>
-      <i data-feather="menu-icon"></i>
+      <i data-feather="menu"></i>
       <i data-feather="search" class="search-icon-only"></i>
     </div>
     <div class="dropdown-menu">
@@ -590,9 +734,26 @@
   </nav>
 
  
+  <div class="herocontainer">
+    <!-- Left Section (Intro Text and Buttons) -->
+    <div class="left">
+      <h2 >Discover Seamless Business Connections</h2>
+      <p>Experience effortless connections with businesses, create your own opportunities, and explore endless possibilities.</p>
+      <div class="buttons">
+        <button class="btn create">
+          <span class="material-icons">add_circle</span> Create
+        </button>
+        <button class="btn">
+          <span class="material-icons">link</span> Connect
+        </button>
+      </div>
+    </div>
 
-  <!-- Scrollable Section for Categories -->
- 
+    <!-- Right Section (Search Bar) -->
+    <div class="right">
+    
+    </div>
+  </div>
   <div class="blurred-line"></div>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
