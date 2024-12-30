@@ -264,7 +264,129 @@
   backdrop-filter: blur(10px); /* Glass effect */
   z-index: 1000;
 }
+    /* Slider Container */
+    .slider-container {
+      margin: 40px 15%;
+      position: relative;
+      height: 85vh;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
 
+    /* Business Name */
+    .business-name {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 8px;
+      z-index: 10;
+    }
+
+    /* Slides */
+    .slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(10px); /* Blur effect applied to the image */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* Content Overlay */
+    .content-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      z-index: 2;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+    }
+
+    .slide-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .slide-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 90px; /* Keep it above the dots */
+    }
+
+    /* Dots Navigation */
+    .dots {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .dot.active {
+      background: #fff;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .slider-container {
+        margin: 40px 5%;
+      }
+
+      .business-name {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+      }
+
+      .slide-title {
+        font-size: 1.5rem;
+      }
+
+      .slide-description {
+        font-size: 0.9rem;
+      }
+    }
 /* Social Media Icons */
 .bottom-nav a {
   display: flex;
@@ -404,45 +526,70 @@
     </div>
   </div>
   <h2 class="intro-text">Who We Are</h2>
-  <div class="content-wrapper">
-    <div class="scrollable-container">
-      <img  src="images/blog_1.jpg" alt="Image 1">
-      <div class="content">
-        <div class="title">Title 1</div>
-        <div class="text-overlay">
-          <div class="description">This is some text relating to Title 1.</div>
+  
+  <div class="slider-container">
+    <div class="business-name">Modern Business</div>
+    <div class="slides">
+      <div class="slide">
+        <img src="images/hh.jpg" alt="Slide 1">
+        <div class="content-overlay">
+          <div class="slide-title">Our Mission</div>
+          <div class="slide-description">
+            We aim to revolutionize the way businesses operate, providing top-notch solutions that blend innovation and practicality.
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="images/bkg.jpg" alt="Slide 2">
+        <div class="content-overlay">
+          <div class="slide-title">Our Mission</div>
+          <div class="slide-description">
+            Empowering businesses with cutting-edge tools and strategies to achieve sustainable growth and success in their industries.
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="images/images.jpg" alt="Slide 3">
+        <div class="content-overlay">
+          <div class="slide-title">Our Commitment</div>
+          <div class="slide-description">
+            Dedicated to excellence, innovation, and delivering unparalleled value to our partners and clients.
+          </div>
         </div>
       </div>
     </div>
-    <div class="scrollable-container">
-      <img src="images/fowe.png" alt="Image 1">
-      <div class="content">
-        <div class="title">Title 1</div>
-        <div class="text-overlay">
-          <div class="description">This is some text relating to Title 1.</div>
-        </div>
-      </div>
-    </div>
-    <div class="scrollable-container">
-      <img src="images/fowe.png" alt="Image 1">
-      <div class="content">
-        <div class="title">Title 1</div>
-        <div class="text-overlay">
-          <div class="description">This is some text relating to Title 1.</div>
-        </div>
-      </div>
-    </div>
-    <div class="scrollable-container">
-      <img src="images/fowe.png" alt="Image 1">
-      <div class="content">
-        <div class="title">Title 1</div>
-        <div class="text-overlay">
-          <div class="description">This is some text relating to Title 1.</div>
-        </div>
-      </div>
+    <div class="dots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
     </div>
   </div>
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
 
+    // Update Slides and Dots
+    function updateSlider(index) {
+      document.querySelector('.slides').style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateSlider(index);
+      });
+    });
+
+    // Auto-Slide
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlider(currentIndex);
+    }, 5000);
+  </script>
   <div class="bottom-nav">
     <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></a>
     <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Twitter"></a>
