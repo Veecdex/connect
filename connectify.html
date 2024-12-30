@@ -10,6 +10,16 @@
   
   <link href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.css" rel="stylesheet">
   <style>
+       
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Ensure scrollbar is hidden for all major browsers */
+    html {
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
     /* Global Styles */
     :root {
       --bg-dark: #121212;
@@ -69,7 +79,7 @@
     }
 
     .navigation-container {
-      margin-top: 20px;
+      margin-top: 70px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 35px;
       padding: 15px;
@@ -147,7 +157,7 @@
       text-align: center;
       font-size: 1.5rem;
       font-weight: 600;
-      color: #555;
+      color: rgb(235, 235, 235);
     }
 
     /* Main Wrapper */
@@ -173,7 +183,6 @@
       position: relative;
       border-radius: 15px;
       display: flex;
-      
       flex-direction: column;
       justify-content: flex-start;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Light shadow */
@@ -181,13 +190,7 @@
     }
 
     /* Image - Ensure full coverage */
-    .scrollable-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Ensure image covers entire container */
-      filter: blur(4px); /* Blur effect on the image */
-    }
-
+ 
     /* Overlay */
     .scrollable-container::before {
       content: '';
@@ -208,7 +211,7 @@
       flex-direction: column;
       justify-content: flex-start;
       padding: 10px;
-      height: 100%;
+      height: 350px;
     }
 
     /* Title Text at the Top */
@@ -247,18 +250,135 @@
         margin: 0;   /* Full width and no margin on mobile */
       }
     }
+
+    .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Transparent black */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 0;
+  backdrop-filter: blur(10px); /* Glass effect */
+  z-index: 1000;
+}
+
+/* Social Media Icons */
+.bottom-nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.bottom-nav img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.bottom-nav img:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  opacity: 0.8; /* Slight fade on hover */
+}
+
+/* Adjustments for Mobile */
+@media (max-width: 768px) {
+  .bottom-nav img {
+    width: 30px;
+    height: 30px;
+  }
+}
+.modern-top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.1); /* Transparent Background */
+  backdrop-filter: blur(15px); /* Glassmorphism Effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  z-index: 1000;
+}
+
+/* Brand Section */
+.modern-top-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modern-top-nav .brand .logo {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%; /* Circular logo */
+}
+
+.modern-top-nav .brand .name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff; /* White text for contrast */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); /* Subtle text shadow */
+}
+
+/* Call Icon */
+.call-icon {
+  font-size: 24px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%); /* Centers vertically */
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.call-icon:hover {
+  color: #ff5722; /* Modern orange */
+  transform: translateY(-50%) scale(1.2); /* Slight enlarge on hover */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .modern-top-nav {
+    height: 60px;
+    padding: 0 15px;
+  }
+
+  .modern-top-nav .brand .logo {
+    height: 35px;
+    width: 35px;
+  }
+
+  .modern-top-nav .brand .name {
+    font-size: 1.2rem;
+  }
+
+  .call-icon {
+    font-size: 22px;
+    right: 50px;
+  }
+}
   </style>
 </head>
 <body>
   <div class="container">
     <!-- Header -->
-    <div  class="header">
+    <nav class="modern-top-nav">
       <div class="brand">
-        <img src="images/fowe.png" alt="Brand Logo">
+        <img src="images/fowe.png" alt="Brand Logo" class="logo">
         <span class="name">Modern Brand</span>
       </div>
       <i data-feather="phone-call" class="call-icon"></i>
-    </div>
+    </nav>
 
     <!-- Navigation Section -->
     <div class="navigation-container">
@@ -286,7 +406,7 @@
   <h2 class="intro-text">Who We Are</h2>
   <div class="content-wrapper">
     <div class="scrollable-container">
-      <img src="images/blog_1.jpg" alt="Image 1">
+      <img  src="images/blog_1.jpg" alt="Image 1">
       <div class="content">
         <div class="title">Title 1</div>
         <div class="text-overlay">
@@ -295,32 +415,42 @@
       </div>
     </div>
     <div class="scrollable-container">
-      <img src="images/men.jpg" alt="Image 3">
+      <img src="images/fowe.png" alt="Image 1">
       <div class="content">
-        <div class="title">Title 3</div>
+        <div class="title">Title 1</div>
         <div class="text-overlay">
-          <div class="description">This is some text relating to Title 3.</div>
+          <div class="description">This is some text relating to Title 1.</div>
         </div>
       </div>
     </div>
     <div class="scrollable-container">
-      <img src="images/fowe.png" alt="Image 3">
+      <img src="images/fowe.png" alt="Image 1">
       <div class="content">
-        <div class="title">Title 3</div>
+        <div class="title">Title 1</div>
         <div class="text-overlay">
-          <div class="description">This is some text relating to Title 3.</div>
+          <div class="description">This is some text relating to Title 1.</div>
         </div>
       </div>
     </div>
     <div class="scrollable-container">
-      <img src="https://via.placeholder.com/250x350" alt="Image 4">
+      <img src="images/fowe.png" alt="Image 1">
       <div class="content">
-        <div class="title">Title 4</div>
+        <div class="title">Title 1</div>
         <div class="text-overlay">
-          <div class="description">This is some text relating to Title 4.</div>
+          <div class="description">This is some text relating to Title 1.</div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></a>
+    <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Twitter"></a>
+    <a href="https://instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="Instagram"></a>
+    <a href="https://linkedin.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
+    <a href="https://youtube.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+    <a href="https://pinterest.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124033.png" alt="Pinterest"></a>
+    <a href="https://tiktok.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046124.png" alt="TikTok"></a>
   </div>
   <!-- Feather Icons Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
