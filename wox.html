@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Store Layout</title>
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Global reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Body styling */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+      overflow: hidden;
+    }
+
+    /* Main container styling */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      flex-wrap: nowrap;
+      margin-left: 150px; /* Added left margin for desktop */
+    }
+
+    /* Store card design */
+    .store-card {
+      flex: 0 0 250px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      scroll-snap-align: start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Hover effect */
+    .store-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Store image styling */
+    .store-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%; /* Circle */
+      background-color: #eee;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .store-image img {
+      border-radius: 50%; /* Ensures image is circular */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Three-dot menu (Font Awesome icon) */
+    .three-dot-icon {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 18px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    /* Store name, niche, and rating */
+    .store-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .store-niche {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    /* Thin star icons for ratings */
+    .ratings {
+      font-size: 1rem;
+      color: #f39c12;
+      margin-bottom: 12px;
+    }
+
+    .ratings i {
+      font-size: 14px; /* Thin rating stars */
+      color: #f39c12;
+    }
+
+    /* Visit Store button  */
+    .visit-store-btn {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s;
+    }
+
+    .visit-store-btn:hover {
+      background-color: #2980b9;
+    }
+
+    /* Ensuring horizontal scroll behavior */
+    .container {
+      overflow-x: auto;
+      display: flex;
+      gap: 20px;
+      scroll-snap-type: x mandatory;
+      flex-wrap: nowrap;
+    }
+
+    /* Remove custom scrollbar */
+    .container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Media Queries for responsive layout */
+    @media screen and (max-width: 768px) {
+      .container {
+        margin-left: 0; /* Remove left margin on mobile */
+        flex-wrap: wrap; /* Stack cards vertically on mobile */
+        justify-content: center; /* Center items */
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Main Content Area -->
+  <div class="container">
+    <!-- Store Card 1 -->
+    <div class="store-card">
+      <div class="three-dot-icon"><i class="fas fa-ellipsis-v"></i></div>
+      <div class="store-image">
+        <img src="https://via.placeholder.com/80" alt="Store Logo">
+      </div>
+      <div class="store-name">Store Name</div>
+      <div class="store-niche">Fashion & Accessories</div>
+      <div class="ratings">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <button class="visit-store-btn">Visit Store</button>
+    </div>
+
+    <!-- Store Card 2 -->
+    <div class="store-card">
+      <div class="three-dot-icon"><i class="fas fa-ellipsis-v"></i></div>
+      <div class="store-image">
+        <img src="https://via.placeholder.com/80" alt="Store Logo">
+      </div>
+      <div class="store-name">Tech World</div>
+      <div class="store-niche">Electronics</div>
+      <div class="ratings">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <button class="visit-store-btn">Visit Store</button>
+    </div>
+
+    <!-- Store Card 3 -->
+    <div class="store-card">
+      <div class="three-dot-icon"><i class="fas fa-ellipsis-v"></i></div>
+      <div class="store-image">
+        <img src="https://via.placeholder.com/80" alt="Store Logo">
+      </div>
+      <div class="store-name">Home Haven</div>
+      <div class="store-niche">Home Decor</div>
+      <div class="ratings">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <button class="visit-store-btn">Visit Store</button>
+    </div>
+
+    <!-- Store Card 4 -->
+    <div class="store-card">
+      <div class="three-dot-icon"><i class="fas fa-ellipsis-v"></i></div>
+      <div class="store-image">
+        <img src="https://via.placeholder.com/80" alt="Store Logo">
+      </div>
+      <div class="store-name">Beauty Bliss</div>
+      <div class="store-niche">Cosmetics</div>
+      <div class="ratings">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <button class="visit-store-btn">Visit Store</button>
+    </div>
+
+    <!-- Store Card 5 -->
+    <div class="store-card">
+      <div class="three-dot-icon"><i class="fas fa-ellipsis-v"></i></div>
+      <div class="store-image">
+        <img src="https://via.placeholder.com/80" alt="Store Logo">
+      </div>
+      <div class="store-name">Gadget Hub</div>
+      <div class="store-niche">Gadgets</div>
+      <div class="ratings">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <button class="visit-store-btn">Visit Store</button>
+    </div>
+  </div>
+
+</body>
+</html>
