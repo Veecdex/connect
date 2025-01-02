@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/font-awesome.min.css">
   <!-- Include Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="styles/style.css">
 <style>
@@ -20,16 +21,15 @@
   <!-- Nav-->
 
   <div class="header">
-    <div class="header-top">
-      
-    </div>
-    <div class="navbar-container"> <!-- Container for navbar -->
+    <div class="navbar-container">
+      <!-- Container for navbar -->
       <div class="navbar">
-       <div  class="brand-name">Vhetty</div> 
-
-       
-       
-         <div class="social-links">
+        <!-- Circular Image -->
+        <img src="images/11.0.jpg" alt="Brand Logo" class="brand-logo">
+        <!-- Brand Name -->
+        <div class="brand-name">Brandname</div>
+        <!-- Social Links -->
+        <div class="social-links">
           <a href="#"><i class="fas fa-phone"></i></a>
         </div>
       </div>
@@ -42,22 +42,22 @@
         <div class="image-slider">
             <div class="slides">
                 <div class="slide">
-                    <img src="images/livingroom.jpg" alt="Slide 1">
+                    <img src="images/fowe.png" alt="Slide 1">
                 </div>
                 <div class="slide">
-                    <img src="images/bedroom2.jpg" alt="Slide 2">
+                    <img src="images/native.jpg" alt="Slide 2">
                 </div>
                 <div class="slide">
-                    <img src="images/bedroom3.jpg" alt="Slide 3">
+                    <img src="images/cake.jpg" alt="Slide 3">
                 </div>
                 <div class="slide">
-                  <img src="images/livingroom.jpg" alt="Slide 1">
+                  <img src="images/fowe.png" alt="Slide 4">
               </div>
               <div class="slide">
-                  <img src="images/bedroom1.jpg" alt="Slide 2">
+                  <img src="images/native.jpg" alt="Slide 5">
               </div>
               <div class="slide">
-                  <img src="images/bedroom2.jpg" alt="Slide 3">
+                  <img src="images/cake.jpg" alt="Slide 6">
               </div>
             </div>
             <div class="indicators">
@@ -78,7 +78,7 @@
       <!-- About Business Container -->
   <div class="container">
     <i style="color: rgb(31, 30, 30);" class="fas fa-info-circle icon"></i>
-    <div class="about-text">About Business </div> <img style=" margin-bottom: 10px; margin-top: 5px; height: 100px; width: 100px; right: 30px; border-radius: 10px;" src="images/profile.jpg" alt="">
+    <div class="about-text">About Business </div> <img style=" margin-bottom: 10px; margin-top: 5px; height: 100px; width: 100px; right: 30px; border-radius: 50%;" src="images/profile.jpg" alt="">
     <div class="small-text">
       This is a business dedicated to providing top-notch services in the industry.
       This is a business dedicated to providing top-notch services in the industry.
@@ -86,33 +86,92 @@
     <button class="see-more">See More</button>
   </div>
 
-  <!-- Contact Business Container -->
   <div class="container">
-    <i style="color: rgb(31, 30, 30); " class="fas fa-address-book icon"></i>
-    <div class="about-text">Contact Business</div>
+    <i class="fas fa-address-book icon" style="color: rgb(31, 30, 30);"></i>
+    <div class="about-text">Contact Business</div><img style=" margin-bottom: 10px; margin-top: 5px; height: 100px; width: 100px; right: 30px; border-radius: 50%;" src="images/7.0.jpg" alt="">
     <div class="small-text">
       Reach out to us via social media for any inquiries or collaborations.
-      Reach out to us via social media for any inquiries or collaborations.
     </div>
-    <div class="social-links">
-      <a style="padding: 13px;" href="#"><i class="fas fa-phone"></i></a>
-      <a style="padding: 13px;" href="#"><i class="fab fa-whatsapp"></i></a>
-      <a style="padding: 13px;" href="#"><i class="fas fa-envelope"></i></a>
+    <div class="detail">
+      <i class="fas fa-map-marker-alt"></i>
+      <span class="location-text">123 Business St, City, Country</span>
     </div>
+    <div class="detail">
+      <i class="fas fa-phone"></i>
+      <span class="phone-text">+1 (234) 567-890</span>
+    </div>
+    <div class="detail">
+      <i class="fas fa-envelope"></i>
+      <span class="mail-text">business@example.com</span>
+    </div>
+
   </div>
 
   <!-- Testimonial Container -->
-  <div class="testimonial-container">
-    <div class="testimonial-text">
-      <div class="testimonial-title">Testimonial</div>
-      <div class="testimonial-small-text">
-        This business exceeded my expectations! Their services are top-tier, and I highly recommend them.
-      </div>
+  <div class="container">
+    <i class="fas fa-box-open icon" style="color: rgb(31, 30, 30);"></i>
+    <div class="about-text">Products and Services</div>
+    <div class="small-text">
+      Explore our range of products and services designed to meet your needs.
     </div>
-    <div class="testimonial-right">
-      <img class="circle-image" src="images/profile.jpg" alt="">
-      <div class="testimonial-name">John Doe</div>
-      <a href="#" class="see-more-link">See More</a>
+    <div class="detail">
+      <i class="fas fa-cogs"></i>
+      <span class="product-text">Customized Solutions</span>
+    </div>
+    <div class="detail">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="product-text">E-commerce Products</span>
+    </div>
+  </div>
+  
+  <!-- Testimonials Section -->
+  <div class="container">
+    <i class="fas fa-user-friends icon" style="color: rgb(31, 30, 30);"></i>
+    <div class="about-text">Testimonials</div>
+    <div class="small-text">
+      Hear what our clients have to say about us!
+    </div>
+    <div class="detail">
+      <i class="fas fa-quote-left"></i>
+      <span class="testimonial-text">"Excellent service and top-notch products."</span>
+    </div>
+    <div class="detail">
+      <i class="fas fa-quote-left"></i>
+      <span class="testimonial-text">"Very professional and easy to work with."</span>
+    </div>
+  </div>
+  
+  <!-- Blog Section -->
+  <div class="container">
+    <i class="fas fa-blog icon" style="color: rgb(31, 30, 30);"></i>
+    <div class="about-text">Blog</div>
+    <div class="small-text">
+      Discover insights and articles to inspire and educate.
+    </div>
+    <div class="detail">
+      <i class="fas fa-pen-nib"></i>
+      <span class="blog-text">"Top Marketing Trends for 2025"</span>
+    </div>
+    <div class="detail">
+      <i class="fas fa-pen-nib"></i>
+      <span class="blog-text">"How to Build an Effective Portfolio"</span>
+    </div>
+  </div>
+  
+  <!-- Portfolio Section -->
+  <div class="container">
+    <i class="fas fa-briefcase icon" style="color: rgb(31, 30, 30);"></i>
+    <div class="about-text">Portfolio</div>
+    <div class="small-text">
+      Explore our past projects and success stories.
+    </div>
+    <div class="detail">
+      <i class="fas fa-project-diagram"></i>
+      <span class="portfolio-text">E-commerce Website Design</span>
+    </div>
+    <div class="detail">
+      <i class="fas fa-paint-brush"></i>
+      <span class="portfolio-text">Brand Identity Development</span>
     </div>
   </div>
      
@@ -129,17 +188,13 @@
 
   
 <footer class="footer">
-  
-  <div class="copyright">
-      &copy; 2024 Vhetty. All rights reserved.
-  </div>
+  all rights reserved 
+ 
   
 </footer>
 
   <!-- Preloader -->
-  <div id="preloader">
-    <div class="typing-text"> Vhetty </div>
-  </div>
+
   <div class="bottom-nav">
     <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></a>
     <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Twitter"></a>
@@ -150,7 +205,7 @@
     <a href="https://tiktok.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046124.png" alt="TikTok"></a>
   </div>
   <script>
-    // JavaScript for slider functionality
+    //  JavaScript for slider functionality 
     const slides = document.querySelectorAll('.slide');
     const indicators = document.querySelectorAll('.indicator');
     let currentSlide = 0;
@@ -173,7 +228,7 @@
     setInterval(() => {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
-    }, 3000); // Change slide every 3 seconds
+    }, 1000); // Change slide every 1 seconds
 
     // Initialize the first slide
     showSlide(currentSlide);

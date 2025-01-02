@@ -48,23 +48,23 @@ body {
   font-family: 'Poppins', sans-serif;
   justify-content: center;
   align-items: flex-start;
-  gap: 10px;
+  gap: 5px;
   background-color: rgb(253, 253, 253);
   margin: 0;
-  padding-top: 110px; /* Ensure page content does not overlap with fixed header */
+  padding-top: 90px; /* Ensure page content does not overlap with fixed header */
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
 
 
 .container {
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  width: 90%;
+  width: calc(49% - 5px); /* Each container takes half width minus gap */
   padding: 20px;
   margin-top: 10px;
+  margin-right: 10px;
   position: relative;
   transition: transform 0.3s;
   display: flex;
@@ -108,25 +108,20 @@ body {
 }
 
 .social-links {
+  margin-left: auto; /* Push the call icon to the far right */
   display: flex;
-  gap: 5px;
+  align-items: center;
 }
 
-.social-links a  {
- 
-  background-color: #1d3557;
-  padding: 10px;
-  border-radius: 50%;
-  font-size: 17px;
-  color: white;
-  height: 50px;
-  width: 50px;
-  transition: background-color 0.3s;
+.social-links a {
+  color: rgba(29, 28, 28, 0.9); /* Icon color */
+  font-size: 18px; /* Icon size */
+  margin-left: 20px; /* Distance from the brand name/logo */
+  text-decoration: none; /* Remove underline */
 }
 
 .social-links a:hover {
-  background-color: #f0f0f0;
-  color: #555;
+  color: #007bff; /* Change color on hover */
 }
 
 /* Testimonial Container */
@@ -265,44 +260,36 @@ body {
     background-color: #457b9d;
   }
 
-.header {
-  background-color: rgb(253, 253, 253);
+  .header {
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Apply a blur effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    color: rgba(29, 28, 28, 0.8); /* Adjusted text color for readability */
+    padding: 5px 20px; /* Reduced padding */
+    text-align: center; /* Center align header text */
+    position: fixed; /* Fix the header at the top of the page */
+    top: 0; /* Stick it at the top */
+    width: 100%; /* Full-width */
+    height: 60px; /* Reduced height */
+    z-index: 10; /* Make sure it's above other elements */
+    display: flex; /* Flex for centering content */
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+    transition: height 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  }
 
-
-   color: rgba(29, 28, 28, 0.5); /* White text color for contrast */
-   padding: 20px; /* Padding around the header text */
-   text-align: center; /* Center align header text */
-   background-blend-mode: overlay; /* Optional: blend the background color with the image */
-   position: fixed; /* Fix the header at the top of the page */
-   top: 0; /* Position it at the top */
-   width: 100%; /* Make it full width */
-}
-
-.header {
-   
-
-   color: rgba(29, 28, 28, 0.9); /* Text color, adjusted for contrast */
-   padding: 20px; /* Padding around the header text */
-   text-align: center; /* Center align header text */
-   background-blend-mode: overlay; /* Optional: blend the background color with the image */
-   position: fixed; /* Fix the header at the top of the page */
-   top: 0; /* Position it at the top */
-   width: 100%; /* Make it full width */
-   height: 100px; /* Adjust height as needed */
-   z-index: 10; /* Ensure it appears above other elements */
-   align-items: center; /* Vertically center content */
-   justify-content: center; /* Horizontally center content */
-}
-
-
+  .brand-logo {
+    width: 40px; /* Circle size */
+    height: 40px;
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image fits well inside the circle */
+    margin-right: 10px; /* Add space between logo and brand name */
+  }
 .navbar {
 display: flex;
 align-items: center;
 justify-content: space-between;
 padding: 10px 20px;
-background-color: rgb(255, 255, 255);
-margin-top: 10px;
-margin: 0 -9px;
 }
 
 .logo-text {
@@ -344,31 +331,26 @@ margin-left: 10px;
 .main-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+
 }
 
 .left-container {
   width: 28%;
- 
   border-radius: 10px;
   margin: 0 10px;
   margin-bottom: 10px; /* Adjust margin between containers  background: linear-gradient(135deg, rgb(74, 13, 145), rgb(59, 9, 117), rgb(148, 65, 196), rgb(72, 21, 92), rgb(106, 6, 131), rgb(72, 4, 99)); */
   padding: 10px;
+  top: -30px;
   box-sizing: border-box;
 }
 
 .right-container {
   width: 70%;
- 
   background-color: rgb(253, 253, 253); /* Adjust styling as needed */
-  border-radius: 10px;
-  margin-bottom: 5px; /* Adjust margin between containers */
-  padding: 10px;
+  margin-bottom: 50px;
   box-sizing: border-box;
   display: flex;
- 
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 
