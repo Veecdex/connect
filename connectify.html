@@ -10,6 +10,107 @@
   
   <link href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.css" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #121212;
+  background-image: url('images/fowe.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden; /* Prevents unwanted scrollbars */
+
+  /* Glass effect */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  background-color: rgba(18, 18, 18, 0.815); /* Semi-transparent for the dark effect */
+}
+
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    .card {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 60%;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .circle img {
+      width: 100px;
+      height: 100px;
+      justify-content: center;
+      object-fit: cover;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .content h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: rgb(88, 88, 235);
+    }
+
+    .content p, .content div {
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .content {
+        text-align: center;
+      }
+
+      .circle {
+        margin-bottom: 15px;
+      }
+    }
+  </style>
+  <style>
        
     body::-webkit-scrollbar {
       display: none;
@@ -39,11 +140,7 @@
       transition: all 0.3s ease;
     }
 
-    .container {
-      width: 70%;
-      margin: 0 auto;
-      padding: 20px;
-    }
+   
 
     .header {
       display: flex;
@@ -143,12 +240,7 @@
       background-color: rgba(0, 0, 0, 0.1);
     }
 
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .container {
-     width: 85%;
-      }
-    }
+  
 
     
     /* Introductory Text */
@@ -492,104 +584,91 @@
   </style>
 </head>
 <body>
-  <div class="container">
+
     <!-- Header -->
     <nav class="modern-top-nav">
       <div class="brand">
         <img src="images/fowe.png" alt="Brand Logo" class="logo">
-        <span class="name">Modern Brand</span>
+        <span class="name">Zuwodev</span>
       </div>
       <i data-feather="phone-call" class="call-icon"></i>
     </nav>
 
-    <!-- Navigation Section -->
-    <div class="navigation-container">
-      <div class="navigation-title">Navigations</div>
-      <div class="nav-items">
-        <div class="nav-item">
-          <i style="color: rgb(124, 124, 219);" data-feather="info"></i>
-          <span>About </span>
+    <div class="container">
+      <!-- ABOUT US -->
+      <div class="card">
+        <div class="circle">
+          <img src="images/10.0.jpg" alt="About Us Icon">
         </div>
-        <div class="nav-item">
-          <i style="color: rgb(124, 124, 219);" data-feather="mail"></i>
-          <span>Contact</span>
-        </div>
-        <div class="nav-item">
-          <i style="color: rgb(124, 124, 219);" data-feather="folder"></i>
-          <span>Portfolio</span>
-        </div>
-        <div class="nav-item">
-          <i style="color: rgb(124, 124, 219);" data-feather="user"></i>
-          <span>Catalogue</span>
+        <div class="content">
+          <h2>ABOUT US</h2>
+          <p>We are committed to providing top-tier services.</p>
+          <p>Our goal is to innovate for a brighter future.</p>
         </div>
       </div>
-    </div>
-  </div>
-  <h2 class="intro-text">Who We Are</h2>
   
-  <div class="slider-container">
-    <div class="business-name">Modern Business</div>
-    <div class="slides">
-      <div class="slide">
-        <img src="images/hh.jpg" alt="Slide 1">
-        <div class="content-overlay">
-          <div class="slide-title">Our Mission</div>
-          <div class="slide-description">
-            We aim to revolutionize the way businesses operate, providing top-notch solutions that blend innovation and practicality.
-          </div>
+      <!-- PRODUCTS AND SERVICES -->
+      <div class="card">
+        <div class="circle">
+          <img src="images/blog_1.jpg" alt="Products & Services">
+        </div>
+        <div class="content">
+          <h2>PRODUCTS & SERVICES</h2>
+          <p>High-quality products tailored to your needs.</p>
+          <p>Services designed to match your lifestyle.</p>
         </div>
       </div>
-      <div class="slide">
-        <img src="images/bkg.jpg" alt="Slide 2">
-        <div class="content-overlay">
-          <div class="slide-title">Our Mission</div>
-          <div class="slide-description">
-            Empowering businesses with cutting-edge tools and strategies to achieve sustainable growth and success in their industries.
-          </div>
+  
+      <!-- CONTACT US -->
+      <div class="card">
+        <div class="circle">
+          <img src="images/img1.jpg" alt="Contact Icon">
+        </div>
+        <div class="content">
+          <h2>CONTACT US</h2>
+          <div><i class="fas fa-map-marker-alt"></i> 123 Modern Lane</div>
+          <div><i class="fas fa-phone-alt"></i> +123 456 789</div>
+          <div><i class="fas fa-envelope"></i> info@modernbrand.com</div>
         </div>
       </div>
-      <div class="slide">
-        <img src="images/images.jpg" alt="Slide 3">
-        <div class="content-overlay">
-          <div class="slide-title">Our Commitment</div>
-          <div class="slide-description">
-            Dedicated to excellence, innovation, and delivering unparalleled value to our partners and clients.
+  
+        <!-- ABOUT US -->
+        <div class="card">
+          <div class="circle">
+            <img src="images/cloth_3.jpg" alt="Testimonials">
+          </div>
+          <div class="content">
+            <h2>Testimonials</h2>
+            <p>We are committed to providing top-tier services.</p>
+            <p>Our goal is to innovate for a brighter future.</p>
           </div>
         </div>
-      </div>
+    
+        <!-- PRODUCTS AND SERVICES -->
+        <div class="card">
+          <div class="circle">
+            <img src="images/8.0.jpg" alt="Products & Services">
+          </div>
+          <div class="content">
+            <h2>Portfolio</h2>
+            <p>High-quality products tailored to your needs.</p>
+            <p>Services designed to match your lifestyle.</p>
+          </div>
+        </div>
+    
+        <!-- CONTACT US -->
+        <div class="card">
+          <div class="circle">
+            <img src="images/bedroom2.jpg" alt="Contact Icon">
+          </div>
+          <div class="content">
+            <h2>Blog</h2>
+            <div><i class="fas fa-map-marker-alt"></i> 123 Modern Lane</div>
+            <div><i class="fas fa-phone-alt"></i> +123 456 789</div>
+            <div><i class="fas fa-envelope"></i> info@modernbrand.com</div>
+          </div>
+        </div>
     </div>
-    <div class="dots">
-      <span class="dot active" data-slide="0"></span>
-      <span class="dot" data-slide="1"></span>
-      <span class="dot" data-slide="2"></span>
-    </div>
-  </div>
-  <script>
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-
-    // Update Slides and Dots
-    function updateSlider(index) {
-      document.querySelector('.slides').style.transform = `translateX(-${index * 100}%)`;
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-      });
-    }
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        currentIndex = index;
-        updateSlider(index);
-      });
-    });
-
-    // Auto-Slide
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateSlider(currentIndex);
-    }, 5000);
-  </script>
   <div class="bottom-nav">
     <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"></a>
     <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/124/124021.png" alt="Twitter"></a>

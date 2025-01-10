@@ -3,168 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Scrollable Containers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Modern Three Containers</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #fff;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
 
-    /* Introductory Text */
-    .intro-text {
-      margin: 20px 0;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #555;
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      width: 90%;
+      max-width: 1200px;
     }
 
-    /* Main Wrapper */
-    .content-wrapper {
-      width: 70%;
-      margin: 0 auto;
-      display: flex;
-      gap: 20px;
-      overflow-x: scroll;
-      padding: 20px 0;
-      scroll-behavior: smooth;
-    }
-
-    /* Remove scrollbar */
-    .content-wrapper::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Scrollable Containers */
-    .scrollable-container {
-      flex: 0 0 250px;
-      height: 350px;
-      position: relative;
+    .card {
+      background: #1e1e1e;
+      padding: 20px;
       border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
       display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Light shadow */
+      align-items: center;
+      gap: 20px;
+    }
+
+    .circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 60%;
       overflow: hidden;
+      background: #fff;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     }
 
-    /* Image - Ensure full coverage */
-    .scrollable-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Ensure image covers entire container */
-      filter: blur(4px); /* Blur effect on the image */
+    .circle img {
+      width: 100px;
+      height: 100px;
+      justify-content: center;
+      object-fit: cover;
     }
 
-    /* Overlay */
-    .scrollable-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4); /* Dark overlay */
-      z-index: 1;
+    .content {
+      flex: 1;
     }
 
-    /* Content inside container */
-    .scrollable-container .content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: 10px;
-      height: 100%;
-    }
-
-    /* Title Text at the Top */
-    .scrollable-container .title {
-      font-size: 1.5rem;
+    .content h2 {
+      font-size: 1.3rem;
       font-weight: 600;
-      color: #fff;
       margin-bottom: 10px;
-      z-index: 2;
+      text-transform: uppercase;
+      color: rgb(88, 88, 235);
     }
 
-    /* Bottom Text Overlay with Modern Border Radius */
-    .scrollable-container .text-overlay {
-      position: absolute;
-      bottom: 20px;
-      left: 15px;
-      right: 15px;
-      padding: 15px;
-      background: rgba(0, 0, 0, 0.7); /* Background for readability */
-      border-radius: 12px;
-      z-index: 2;
-      max-width: 90%;
+    .content p, .content div {
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .scrollable-container .text-overlay .description {
-      font-size: 1rem;
-      color: #fff;
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    /* Media Query for Mobile */
     @media (max-width: 768px) {
-      .content-wrapper {
-        width: 100%;
-        margin: 0;   /* Full width and no margin on mobile */
+      .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .content {
+        text-align: center;
+      }
+
+      .circle {
+        margin-bottom: 15px;
       }
     }
   </style>
 </head>
 <body>
-  <h2 class="intro-text">Who We Are</h2>
-  <div class="content-wrapper">
-    <div class="scrollable-container">
-      <img src="https://via.placeholder.com/250x350" alt="Image 1">
+  <div class="container">
+    <!-- ABOUT US -->
+    <div class="card">
+      <div class="circle">
+        <img src="images/about.jpg" alt="About Us Icon">
+      </div>
       <div class="content">
-        <div class="title">Title 1</div>
-        <div class="text-overlay">
-          <div class="description">This is some text relating to Title 1.</div>
-        </div>
+        <h2>ABOUT US</h2>
+        <p>We are committed to providing top-tier services.</p>
+        <p>Our goal is to innovate for a brighter future.</p>
       </div>
     </div>
-    <div class="scrollable-container">
-      <img src="https://via.placeholder.com/250x350" alt="Image 2">
+
+    <!-- PRODUCTS AND SERVICES -->
+    <div class="card">
+      <div class="circle">
+        <img src="images/services.jpg" alt="Products & Services">
+      </div>
       <div class="content">
-        <div class="title">Title 2</div>
-        <div class="text-overlay">
-          <div class="description">This is some text relating to Title 2.</div>
-        </div>
+        <h2>PRODUCTS & SERVICES</h2>
+        <p>High-quality products tailored to your needs.</p>
+        <p>Services designed to match your lifestyle.</p>
       </div>
     </div>
-    <div class="scrollable-container">
-      <img src="https://via.placeholder.com/250x350" alt="Image 3">
+
+    <!-- CONTACT US -->
+    <div class="card">
+      <div class="circle">
+        <img src="images/contact.png" alt="Contact Icon">
+      </div>
       <div class="content">
-        <div class="title">Title 3</div>
-        <div class="text-overlay">
-          <div class="description">This is some text relating to Title 3.</div>
-        </div>
+        <h2>CONTACT US</h2>
+        <div><i class="fas fa-map-marker-alt"></i> 123 Modern Lane</div>
+        <div><i class="fas fa-phone-alt"></i> +123 456 789</div>
+        <div><i class="fas fa-envelope"></i> info@modernbrand.com</div>
       </div>
     </div>
-    <div class="scrollable-container">
-      <img src="https://via.placeholder.com/250x350" alt="Image 4">
-      <div class="content">
-        <div class="title">Title 4</div>
-        <div class="text-overlay">
-          <div class="description">This is some text relating to Title 4.</div>
+
+      <!-- ABOUT US -->
+      <div class="card">
+        <div class="circle">
+          <img src="images/testimmonials.jpg" alt="Testimonials">
+        </div>
+        <div class="content">
+          <h2>Testimonials</h2>
+          <p>We are committed to providing top-tier services.</p>
+          <p>Our goal is to innovate for a brighter future.</p>
         </div>
       </div>
-    </div>
+  
+      <!-- PRODUCTS AND SERVICES -->
+      <div class="card">
+        <div class="circle">
+          <img src="images/portfolio.jpg" alt="Products & Services">
+        </div>
+        <div class="content">
+          <h2>Portfolio</h2>
+          <p>High-quality products tailored to your needs.</p>
+          <p>Services designed to match your lifestyle.</p>
+        </div>
+      </div>
+  
+      <!-- CONTACT US -->
+      <div class="card">
+        <div class="circle">
+          <img src="images/contact.png" alt="Contact Icon">
+        </div>
+        <div class="content">
+          <h2>Blog</h2>
+          <div><i class="fas fa-map-marker-alt"></i> 123 Modern Lane</div>
+          <div><i class="fas fa-phone-alt"></i> +123 456 789</div>
+          <div><i class="fas fa-envelope"></i> info@modernbrand.com</div>
+        </div>
+      </div>
   </div>
 </body>
 </html>
