@@ -3,1007 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Navbar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/feather-icons"></script>
-  <style>
-    /* General Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background-color: #ffffff;
-      height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Navigation Styles */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #131e31de;
-      color: rgb(247, 184, 184);
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 1000;
-    }
-
-    .brand-name {
-      font-size: 1.5rem;
-      font-weight: 500;
-      color:white;
-    }
-
-    .search-bar {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      
-    }
-
-    .search-bar input {
-      width: 70%;
-      max-width: 500px;
-      padding: 0.7rem;
-      border: 1px solid #ddd;
-      border-radius: 15px;
-      outline: none;
-      transition: box-shadow 0.3s;
-    }
-
-    .search-bar input:focus {
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .search-icon {
-      margin-left: 10px;
-      cursor: pointer;
-    }
-
-    .nav-icons {
-      display: flex;
-      gap: 1.5rem;
-      color: rgb(255, 255, 255);
-    }
-
-    .nav-icons i {
-      cursor: pointer;
-    }
-
-    
-   
-
-
-    /* Scrollable Section for Categories */
-    .categories-section {
-      margin-top: -100px;
-      padding: 3rem;
-      display: flex;
-      position: relative;
-      gap: 0.8rem;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      
-    }
-
-    .categories-section::-webkit-scrollbar {
-      display: none;
-    }
-    .category-container {
-      flex: 0 0 auto;
-      background: rgb(255, 254, 254);
-      border-radius: 15px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      width: 200px;
-      height: 250px;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .category-container .icon {
-      background: #0a111d;
-      color: #fff;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 0.5rem;
-      margin-top: 20px;
-    }
-
-    .category-container p {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-      font-weight: 500;
-    }
-
-    .category-container .view-btn {
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-      color: rgb(255, 251, 251);
-      background: #0a111d;
-      width: 100px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      padding: 10px;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3rem;
-    }
-
-    .category-container .view-btn i {
-      font-size: 1rem;
-    }
-
-    /* Mobile-specific adjustments */
-    @media (max-width: 768px) {
-      .search-bar {
-        display: none;
-      }
-
-      .search-icon-only {
-        display: inline-block;
-      }
-      .brand-name {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color:white;
-    }
-     
-
-      .categories-section {
-        padding: 1rem;
-        margin-top: -80px;
-      }
-   
-      .category-container {
-        width: 150px;
-      }
-    }
-
-    /* Search Page (Mobile Toggle) */
-    .search-page {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #f9f9f9;
-      z-index: 1001;
-      padding: 2rem;
-    }
-
-    .search-page.active {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .search-page .back-icon {
-      align-self: flex-start;
-      cursor: pointer; 
-    }
-    /* Mobile-specific adjustments */
-@media (min-width: 768px) {
-  .search-icon-only {
-    display: none; /* Hides the search icon on desktop */
-  }
-}
-
-.menu-icon {
-  cursor: pointer;
-}
-
-/* Dropdown Menu */
-.dropdown-menu {
-  position: absolute;
-  top: 60px; /* Adjust to match your nav height */
-  right: 20px;
-  background-color: #000;
-  color: #fff;
-  border-radius: 15px;
-  display: none; /* Initially hidden */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: #fff;
-  border-bottom: 1px solid #333;
-}
-
-.dropdown-menu a:last-child {
-  border-bottom: none;
-}
-
-.dropdown-menu a:hover {
-  background-color: #444;
-  color: #fff;
-}
-.hero-container {
-      width: 100%;
-     
-      max-height: 500px; /* Restrict for large desktops */
-      min-height: 300px; /* Ensure height on small screens */
-      position: relative;
-      background-color: #131e31;
-      color: white;
-      padding: 20px;
-      display: flex;
-      margin-top: 60px;
-      flex-direction: column;
-      align-items: center;
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-    }
-
-   
-
-
-    .hero-title {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-    }
-
-    .hero-section {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      width: 90%;
-      max-width: 1200px;
-    }
-
-    .container {
-      background: #0a111d;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      color: #fff;
-      height: 100px;
-      font-weight: bold;
-      transition: transform 0.3s ease, background 0.3s ease;
-
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .container i {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-    }
-
-    .container:hover {
-      transform: translateY(-5px);
-      background: #555;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .hero-section {
-        grid-template-columns: repeat(3, 1fr); /* 3 on smaller screens */
-     
-      }
-
-      .container {
-        font-size: 0.75rem;
-      
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-section {
-        grid-template-columns: repeat(3, 1fr); /* Keep 3 even on tiny screens */
-        gap: 8px;
-      }
-
-      .container {
-        font-size: 0.7rem;
-        padding: 8px;
-      }
-
-      .container i {
-        font-size: 1rem;
-      }
-    }
-    .blurred-line {
-  width: 100%; /* Full width */
-  height: 1px; /* Thin line */
-  background: rgb(194, 193, 193); /* Light black color with transparency */
- 
-}
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 10px;
-  justify-content: center;
-}
-.card {
-  width: 370px;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-.image-container {
-  width: 100%;
-  height: 190px;
-  overflow: hidden;
-}
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.info {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px;
-}
-.circle-image {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-top: 30px;
-  border: 2px solid #ddd;
-}
-.circle-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.text-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-.text-content .brand-name {
-  font-weight: 700;
-  font-size: 1rem;
-  margin: 0;
-}
-.text-content .info-item {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-  color: #555;
-  margin: 5px 0;
-}
-.text-content .info-item i {
-  margin-right: 8px;
-  color: #888;
-  font-weight: 300;
-}
-.business-owner {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #333;
-  font-style: italic;
-}
-.business-owner:before {
-  content: "";
-  width: 30px;
-  height: 2px;
-  background: #333;
-  display: inline-block;
-}
-@media (max-width: 768px) {
-  .card {
-    width: 100%;
-    border-radius: 0px;
-  }
-}
-
-.explore-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-left: 70px;
-  margin-bottom: 10px;
-  
-}
-
-  </style>
-  
-</head>
-<body>
-  <!-- Navigation -->
-  <nav>
-    <div class="brand-name"> WieselBusiness</div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search...">
-      <i data-feather="search" class="search-icon"></i>
-    </div>
-    <div class="nav-icons">
-      <i data-feather="user"></i>
-      <i data-feather="search" class="search-icon-only"></i>
-    </div>
-    <div class="dropdown-menu">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Portfolio</a>
-      <a href="#">Blog</a>
-      <a href="#">Contact</a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <div class="hero-container">
-   
-    <div class="hero-section">
-      <!-- Hero Containers -->
-      <a href="#about-us" class="container">
-        <i data-feather="info"></i>
-        About Us
-      </a>
-      <a href="#all-categories" class="container">
-        <i data-feather="list"></i>
-        All Categories
-      </a>
-      <a href="#contact-us" class="container">
-        <i data-feather="phone"></i>
-        Contact Us
-      </a>
-      <a href="#brands" class="container">
-        <i data-feather="tag"></i>
-        Brands
-      </a>
-      <a href="#ads-marketing" class="container">
-        <i data-feather="bar-chart"></i>
-        Ads & Marketing
-      </a>
-      <a href="#start-business" class="container">
-        <i data-feather="briefcase"></i>
-        Start Business
-      </a>
-    </div>
-  </div>
-
-  <!-- Scrollable Section for Categories -->
-  <section class="categories-section">
-    <div class="category-container">
-      <div class="icon"><i data-feather="shopping-bag"></i></div>
-      <p>Fashion</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-    <div class="category-container">
-      <div class="icon"><i data-feather="coffee"></i></div>
-      <p>Food items</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-    <div class="category-container">
-      <div class="icon"><i data-feather="phone"></i></div>
-      <p>Gadgets</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-    <div class="category-container">
-      <div class="icon"><i data-feather="table"></i></div>
-      <p>Home items</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-    <div class="category-container">
-      <div class="icon"><i data-feather="home"></i></div>
-      <p>Skin care</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-    <div class="category-container">
-      <div class="icon"><i data-feather="tool"></i></div>
-      <p>Tools</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-    <div class="category-container">
-      <div class="icon"><i data-feather="shopping-bag"></i></div>
-      <p>Fashion</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-    <div class="category-container">
-      <div class="icon"><i data-feather="coffee"></i></div>
-      <p>Food items</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-    <div class="category-container">
-      <div class="icon"><i data-feather="phone"></i></div>
-      <p>Gadgets</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-    <div class="category-container">
-      <div class="icon"><i data-feather="table"></i></div>
-      <p>Home items</p>
-      <a class="view-btn">
-        <i data-feather="eye"></i> View
-      </a>
-    </div>
-  </section>
-  <div class="blurred-line"></div>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<div class="card-container">
-  <!-- Card Example -->
-  <div class="card">
-    <div class="image-container">
-      <img src="images/cloth_1.jpg" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="images/person_1.jpg" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="image-container">
-      <img src="images/cloth_2.jpg" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="images/person_1.jpg" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>    <div class="card">
-    <div class="image-container">
-      <img src="images/blog_1.jpg" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="images/person_3.jpg" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>    <div class="card">
-    <div class="image-container">
-      <img src="https://via.placeholder.com/300x180" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="https://via.placeholder.com/50" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>
-  <!-- Add more cards by copying this block -->
-  <div class="card">
-    <div class="image-container">
-      <img src="https://via.placeholder.com/300x180" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="https://via.placeholder.com/50" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>    <div class="card">
-    <div class="image-container">
-      <img src="https://via.placeholder.com/300x180" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="https://via.placeholder.com/50" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>
-</div>
-  <script>
-    feather.replace();
-
-    const searchIconOnly = document.querySelector('.search-icon-only');
-    const searchPage = document.querySelector('.search-page');
-    const backIcon = document.querySelector('.back-icon');
-
-    searchIconOnly.addEventListener('click', () => {
-      searchPage.classList.add('active');
-    });
-
-    backIcon.addEventListener('click', () => {
-      searchPage.classList.remove('active');
-    });
-  </script>
-  <script>
-    // Selecting the menu icon and dropdown menu
-const menuIcon = document.querySelector('.menu-icon');
-const dropdownMenu = document.querySelector('.dropdown-menu');
-
-// Toggle dropdown menu on click
-menuIcon.addEventListener('click', () => {
-  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-});
-
-// Feather icons
-feather.replace();
-
-  </script>
-</body>
-</html>
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Interface</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    /* Left Section */
-    .left-section {
-      width: 30%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      background: url('images/fowe.png') no-repeat center center/cover;
-      color: white;
-      position: relative;
-    }
-
-    .left-section::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      z-index: 1;
-    }
-
-    .left-section > * {
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Brand Name */
-    .brand-name {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    /* Profile Container */
-    .profile-container {
-      width: 100%;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .profile-container img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-      border: 2px solid white;
-    }
-
-    .profile-icons {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      gap: 15px;
-    }
-
-    .profile-icons i {
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: transform 0.3s, color 0.3s;
-    }
-
-    .profile-icons i:hover {
-      transform: scale(1.2);
-      color: #007bff;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 10px;
-    }
-
-    .social-icons i {
-      width: 35px;
-      height: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: transform 0.3s, background 0.3s;
-    }
-
-    .social-icons i:hover {
-      transform: scale(1.2);
-      background: #007bff;
-    }
-
-    /* Navigation */
-    .navigation {
-      width: 100%;
-      margin-top: 20px;
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      margin-bottom: 10px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .nav-item.active {
-      background: #007bff;
-    }
-
-    .nav-item:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-3px);
-    }
-
-    /* Right Section */
-    .right-section {
-      width: 70%;
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 20px;
-      display: none;
-    }
-
-    .right-section.active {
-      display: flex;
-    }
-
-    .back-btn {
-      display: none;
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-bottom: 20px;
-    }
-
-    .right-content {
-      text-align: center;
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .left-section {
-        width: 100%;
-        height: 100%;
-      }
-
-      .right-section {
-        width: 100%;
-        height: 100%;
-        padding: 20px;
-      }
-
-      .back-btn {
-        display: block;
-      }
-
-      .left-section.hidden {
-        display: none;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Left Section -->
-  <div class="left-section" id="leftSection">
-    <!-- Brand Name -->
-    <div class="brand-name">
-     Our Brandname 
-    </div>
-    <div class="profile-container">
-      <img src="images/fowe.png" alt="Profile">
-      <div class="profile-icons">
-        <i class="fas fa-phone"></i>
-        <i class="fas fa-envelope"></i>
-        <i class="fab fa-whatsapp"></i>
-      </div>
-      <div class="social-icons">
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-linkedin-in"></i>
-        <i class="fab fa-pinterest"></i>
-      </div>
-    </div>
-    <div class="navigation">
-      <div class="nav-item" onclick="showContent('home')">
-        <i class="fas fa-home"></i><span>Home</span><i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="nav-item" onclick="showContent('about')">
-        <i class="fas fa-user"></i><span>About Us</span><i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="nav-item" onclick="showContent('contact')">
-        <i class="fas fa-envelope"></i><span>Contact Us</span><i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="nav-item" onclick="showContent('projects')">
-        <i class="fas fa-briefcase"></i><span>Projects</span><i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="nav-item" onclick="showContent('catalogue')">
-        <i class="fas fa-book"></i><span>Catalogue</span><i class="fas fa-chevron-right"></i>
-      </div>
-    </div>
-  </div>
-
-  <!-- Right Section -->
-  <div class="right-section" id="rightSection">
-    <button class="back-btn" onclick="goBack()">Back</button>
-    <div class="right-content" id="rightContent">
-      <h1>Default Content</h1>
-      <p>Select a navigation item to display content here.</p>
-    </div>
-  </div>
-
-  <script>
-    const showContent = (section) => {
-      const leftSection = document.getElementById('leftSection');
-      const rightSection = document.getElementById('rightSection');
-      const rightContent = document.getElementById('rightContent');
-
-      leftSection.classList.add('hidden');
-      rightSection.classList.add('active');
-
-      const content = {
-        home: '<h1>Home</h1><p>Welcome to the home section.</p>',
-        about: '<h1>About Us</h1><p>This is the About Us section.</p>',
-        contact: '<h1>Contact Us</h1><p>Reach us through this section.</p>',
-        projects: '<h1>Projects</h1><p>Check out our projects here.</p>',
-        catalogue: '<h1>Catalogue</h1><p>Explore our catalogue here.</p>',
-      };
-
-      rightContent.innerHTML = content[section];
-    };
-
-    const goBack = () => {
-      const leftSection = document.getElementById('leftSection');
-      const rightSection = document.getElementById('rightSection');
-
-      leftSection.classList.remove('hidden');
-      rightSection.classList.remove('active');
-    };
-  </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Navbar</title>
+  <title>Wiesel</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/feather-icons"></script>
@@ -1028,6 +28,7 @@ feather.replace();
       background-color: #ffffff;
       height: 100vh;
       overflow-x: hidden;
+      padding: 5px;
     }
 
     /* Navigation Styles */
@@ -1050,6 +51,7 @@ feather.replace();
       font-size: 1.5rem;
       font-weight: 500;
       color:#333;
+  
     }
 
     .search-bar {
@@ -1280,31 +282,7 @@ feather.replace();
       max-width: 1200px;
     }
 
-    .container {
-      background: #0a111d;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      color: #fff;
-      height: 100px;
-      font-weight: bold;
-      transition: transform 0.3s ease, background 0.3s ease;
 
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .container i {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-    }
-
-    .container:hover {
-      transform: translateY(-5px);
-      background: #555;
-    }
 
 
     .blurred-line {
@@ -1537,154 +515,134 @@ feather.replace();
       }
     }
 
-    /* Add spacing to content so it's above the nav bar */
-    .content {
-      padding-bottom: 80px;
-      text-align: center;
-    }
-    .herocontainer {
+    .container-row {
       display: flex;
-      justify-content: space-between;
-      padding: 30px;
-      margin-top: 130px;
-      background-image: url('images/bkg.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin-left: 10px;
-      margin-right: 10px;
-      background-color: #0a111d;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       flex-wrap: wrap;
-     
-    }
-
-    /* Left Container (Text and Buttons) */
-    .left {
-      flex: 1 1 45%;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .left h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: rgb(255, 255, 255);
-      margin: 0;
-    }
-
-    .left p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: rgb(235, 235, 235);
-    }
-
-    .buttons {
-      display: flex;
-      gap: 15px;
-      justify-content: flex-start;
-    }
-
-    .btn {
-      display: flex;
-      align-items: center;
       gap: 10px;
-      padding: 12px 20px;
+      margin-top: 110px;
+    }
+
+    .container {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
       border-radius: 10px;
-      background-color: #0a111d;
-      font-size: 1rem;
-      border: 1px solid;
-      font-weight: 500;
-      color: rgb(251, 250, 250);
-      border-color: rgb(255, 255, 255);
-      cursor: pointer;
-      transition: 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 5px;
+      width: calc(33.33% - 11px);
+      box-sizing: border-box;
+ 
     }
 
-    .btn.create {
-      background-color: white;
-      border: 1px;
-      border-style: solid;
-      color: #333;
-      border-color: #0a111d;
+    .container img,
+    .container video {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    
+      margin-top: 10px;
     }
 
-    .btn:hover {
-      transform: scale(1.05);
-    }
-
-    .btn.create:hover {
-      background-color: #0a111d;
-      color: rgb(255, 255, 255);
-    }
-
-    /* Right Container (Search Bar) */
-    .right {
-      flex: 1 1 40%;
+    .top-row {
       display: flex;
-      justify-content: flex-end;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .user-info {
+      display: flex;
       align-items: center;
     }
 
-  
-    /* Responsive Design for Mobile */
-    @media (max-width: 768px) {
-      .herocontainer {
-        flex-direction: column;
-        padding: 15px;
-      
-      }
-
-      .left {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-
-      .buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn {
-        width: 80%;
-        padding: 12px 0;
-        font-size: 1rem;
-        justify-content: center;
-      }
-
-      .right {
-        margin-top: 20px;
-        width: 100%;
-        justify-content: center;
-      }
-
-      .search-bar {
-        margin: 0 auto;
-      }
-     .headbusiness{
-        font-size: 2px;
-      }
+    .user-info img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 10px;
     }
 
-  /* Responsive styling for <h2> on mobile */
-  @media (max-width: 768px) {
-    .left h2 {
-      font-size: 25px;
-      font-weight: 400;
-      color: rgb(253, 253, 253);
-      margin: 0;
+    .user-info span {
+      font-weight: 500;
+      font-size: 14px;
+      color: #111827;
     }
-    .himg{
-      display: none;
+
+    .top-icons {
+      display: flex;
+      gap: 10px;
     }
-  }
-  .himg{
-    height: 300px;
-    width: 500px;
-    background-image: url('images/10.0.jpg');
-  }
+
+    .top-icons i {
+      cursor: pointer;
+      color: #6b7280;
+    }
+
+    .icons-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+
+    .icons-row .left {
+      display: flex;
+      gap: 12px;
+    }
+
+    .icons-row i {
+      cursor: pointer;
+      color: #6b7280;
+    }
+
+    .short-text {
+      margin: 15px 0 8px;
+      font-size: 14px;
+      color: #374151;
+    }
+
+    .short-text a {
+      color: #3b82f6;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .short-text a:hover {
+      text-decoration: underline;
+    }
+
+    .meta-info {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .meta-info i {
+      margin-left: 8px;
+    }
+.PRF{
+  border-radius: 9px;
+}
+    @media screen and (max-width: 768px) {
+      .container-row {
+        gap: 15px; /* Smaller gap for mobile */
+      }
+
+      .container {
+        width: 100%; /* Full width for mobile */
+        border: none;
+       border-radius: 0px;
+       box-shadow: none;
+
+      }
+
+      .container img,
+      .container video {
+        border-radius: 0px; /* Slightly smaller radius for smaller screens */
+        width: 106%;
+        margin-left:-10px ;
+      }
+    
     
   </style>
   
@@ -1693,13 +651,10 @@ feather.replace();
   <!-- Navigation -->
   <nav>
     <div class="brand-name"> WieselBusiness</div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search...">
-      <i data-feather="search" class="search-icon"></i>
-    </div>
+    
     <div class="nav-icons">
-      <i data-feather="menu"></i>
-      <i data-feather="search" class="search-icon-only"></i>
+      <i data-feather="bell"></i>
+      <i data-feather="bookmark"></i>
     </div>
     <div class="dropdown-menu">
       <a href="#">Home</a>
@@ -1733,126 +688,129 @@ feather.replace();
   </nav>
 
  
-  <div class="herocontainer">
-    <!-- Left Section (Intro Text and Buttons) -->
-    <div class="left">
-      <h2 >Discover Seamless Business Connections</h2>
-      <p>Experience effortless connections with businesses, create your own opportunities, and explore endless possibilities.</p>
-      <div class="buttons">
-        <button class="btn create">
-          <span class="material-icons">add_circle</span> Create
-        </button>
-        <button class="btn">
-          <span class="material-icons">link</span> Connect
-        </button>
+  <div class="container-row">
+    <!-- Container -->
+    <div class="container">
+      <!-- Top Row -->
+      <div class="top-row">
+        <div class="user-info">
+          <img  style=" margin-left: 3px; border-radius: 50px;" src="images/person_4.jpg" alt="User Image">
+          <span>Dave3wuyy</span>
+        </div>
+        <div class="top-icons">
+          <i data-feather="more-vertical"></i>
+          <i data-feather="phone"></i>
+          <i data-feather="message-circle"></i>
+        </div>
       </div>
+  
+      <!-- Image -->
+      <img style="left: 0; right: 0;" src="images/shoe1.jpg" alt="Content Image">
+  
+      <!-- Icon Row -->
+      <div class="icons-row">
+        <div class="left">
+          <i data-feather="heart"></i>
+          <i data-feather="message-circle"></i>
+        </div>
+        <i data-feather="shopping-bag"></i>
+      </div>
+  
+      <!-- Short Text -->
+      <p class="short-text">
+        This is a brief description of the content... <a href="#">More</a>
+      </p>
+  
+      <!-- Meta Info -->
+      <p class="meta-info">
+        2 hrs ago     </p>
+        <p class="meta-info">
+        <i data-feather="map-pin"></i> 
+        Agege , Nigeria
+      </p>
     </div>
-
-    <!-- Right Section (Search Bar) -->
-    <div class="right">
+    <div class="container">
+      <!-- Top Row -->
+      <div class="top-row">
+        <div class="user-info">
+          <img style=" margin-left: 3px; border-radius: 50px;" src="images/person_1.jpg" alt="User Image">
+          <span>mike009</span>
+        </div>
+        <div class="top-icons">
+          <i data-feather="more-vertical"></i>
+          <i data-feather="phone"></i>
+          <i data-feather="message-circle"></i>
+        </div>
+      </div>
+  
+      <!-- Image -->
+      <img style="left: 0; right: 0;" src="images/blog_1.jpg" alt="Content Image">
+  
+      <!-- Icon Row -->
+      <div class="icons-row">
+        <div class="left">
+          <i data-feather="heart"></i>
+          <i data-feather="message-circle"></i>
+        </div>
+        <i data-feather="shopping-bag"></i>
+      </div>
+  
+      <!-- Short Text -->
+      <p class="short-text">
+        This is a brief description of the content... <a href="#">More</a>
+      </p>
+  
+      <!-- Meta Info -->
+      <p class="meta-info">
+        2m ago     </p>
+        <p class="meta-info">
+        <i data-feather="map-pin"></i> 
+       Abokuta , Nigeria
+      </p>
+    </div>
+  
+    <div class="container">
+      <!-- Top Row -->
+      <div class="top-row">
+        <div class="user-info">
+          <img style=" margin-left: 3px; border-radius: 50px;" src="images/person_2.jpg" alt="User Image">
+          <span>ola56</span>
+        </div>
+        <div class="top-icons">
+          <i data-feather="more-vertical"></i>
+          <i data-feather="phone"></i>
+          <i data-feather="message-circle"></i>
+        </div>
+      </div>
+  
+      <!-- Image -->
+      <img style="left: 0; right: 0;" src="images/cloth_1.jpg" alt="Content Image">
+  
+      <!-- Icon Row -->
+      <div class="icons-row">
+        <div class="left">
+          <i data-feather="heart"></i>
+          <i data-feather="message-circle"></i>
+        </div>
+        <i data-feather="shopping-bag"></i>
+      </div>
+  
+      <!-- Short Text -->
+      <p class="short-text">
+        This is a brief description of the content... <a href="#">More</a>
+      </p>
+  
+      <!-- Meta Info -->
+      <p class="meta-info">
+        2 hrs ago     </p>
+        <p class="meta-info">
+        <i data-feather="map-pin"></i> 
+        Ikeja , Nigeria
+      </p>
+    </div>
+    <!-- Duplicate more containers here -->
     
-    </div>
   </div>
-  <h3 style="margin-left: 10px; margin-top: 20px; font-weight: 700;"  >Explore</h3>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<div class="card-container">
-  <!-- Card Example -->;''
-  <div class="card">
-    <div class="image-container">
-      <img src="images/cloth_1.jpg" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="images/person_1.jpg" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="image-container">
-      <img src="images/cloth_2.jpg" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="images/person_1.jpg" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>    <div class="card">
-    <div class="image-container">
-      <img src="images/blog_1.jpg" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="images/person_3.jpg" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>    <div class="card">
-    <div class="image-container">
-      <img src="images/fowe.png" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="images/person_1.jpg" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>
-  <!-- Add more cards by copying this block -->
-  <div class="card">
-    <div class="image-container">
-      <img src="images/bedroom2.jpg" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="images/person_2.jpg" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>    <div class="card">
-    <div class="image-container">
-      <img src="images/img1.jpg" alt="Business">
-    </div>
-    <div class="info">
-      <div class="circle-image">
-        <img src="https://via.placeholder.com/50" alt="Profile">
-      </div>
-      <div class="text-content">
-        <p class="brand-name">Modern Fashion</p>
-        <p class="info-item"><i class="far fa-folder"></i> Fashion Design</p>
-        <p class="info-item"><i class="far fa-map-marker-alt"></i> Lagos, Nigeria</p>
-        <div class="business-owner">John Doe</div>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="bottom-navigation">
   <a href="#" class="nav-item active">
     <i data-feather="home"></i>
@@ -1864,13 +822,19 @@ feather.replace();
   </a>
   <a href="#" class="nav-item">
     <i data-feather="plus"></i>
-    <span>Create</span>
+    <span>Post</span>
+  </a>
+  <a href="#" class="nav-item">
+    <i data-feather="shopping-bag"></i>
+    <span>Cart</span>
   </a>
   <a href="#" class="nav-item">
     <i data-feather="user"></i>
     <span>Profile</span>
   </a>
 </div>
+<script src="https://unpkg.com/feather-icons"></script>
+
   <script>
     feather.replace();
 
@@ -1926,104 +890,3 @@ feather.replace();
 
 
 
-
-
-
-
-
-<div class="container">
-  <!-- Header -->
-  <nav class="modern-top-nav">
-    <div class="brand">
-      <img src="images/fowe.png" alt="Brand Logo" class="logo">
-      <span class="name">Zuwodev</span>
-    </div>
-    <i data-feather="phone-call" class="call-icon"></i>
-  </nav>
-
-  <!-- Navigation Section -->
-  <div class="navigation-container">
-    <div class="navigation-title">Navigations</div>
-    <div class="nav-items">
-      <div class="nav-item">
-        <i style="color: rgb(124, 124, 219);" data-feather="info"></i>
-        <span>About </span>
-      </div>
-      <div class="nav-item">
-        <i style="color: rgb(124, 124, 219);" data-feather="mail"></i>
-        <span>Contact</span>
-      </div>
-      <div class="nav-item">
-        <i style="color: rgb(124, 124, 219);" data-feather="folder"></i>
-        <span>Portfolio</span>
-      </div>
-      <div class="nav-item">
-        <i style="color: rgb(124, 124, 219);" data-feather="user"></i>
-        <span>Catalogue</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slider-container">
-  <div class="business-name">Modern Business</div>
-  <div class="slides">
-    <div class="slide">
-      <img src="images/8.0.jpg" alt="Slide 1">
-      <div class="content-overlay">
-        <div class="slide-title">Our Mission</div>
-        <div class="slide-description">
-          We aim to revolutionize the way businesses operate, providing top-notch solutions that blend innovation and practicality.
-        </div>
-      </div>
-    </div>
-    <div class="slide">
-      <img src="images/bkg.jpg" alt="Slide 2">
-      <div class="content-overlay">
-        <div class="slide-title">Our Mission</div>
-        <div class="slide-description">
-          Empowering businesses with cutting-edge tools and strategies to achieve sustainable growth and success in their industries.
-        </div>
-      </div>
-    </div>
-    <div class="slide">
-      <img src="images/images.jpg" alt="Slide 3">
-      <div class="content-overlay">
-        <div class="slide-title">Our Commitment</div>
-        <div class="slide-description">
-          Dedicated to excellence, innovation, and delivering unparalleled value to our partners and clients.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="dots">
-    <span class="dot active" data-slide="0"></span>
-    <span class="dot" data-slide="1"></span>
-    <span class="dot" data-slide="2"></span>
-  </div>
-</div>
-<script>
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  let currentIndex = 0;
-
-  // Update Slides and Dots
-  function updateSlider(index) {
-    document.querySelector('.slides').style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
-  }
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      currentIndex = index;
-      updateSlider(index);
-    });
-  });
-
-  // Auto-Slide
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateSlider(currentIndex);
-  }, 5000);
