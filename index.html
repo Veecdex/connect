@@ -650,6 +650,50 @@
       }
     
     }
+    .shopping-bag-container {
+    position: relative;
+    display: inline-block;
+}
+    .circle-indicator {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #ff0000;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ffffff;
+}
+.notification-container {
+    position: relative;
+    display: inline-block;
+}
+
+.circle-indicator {
+    position: absolute;
+    top: -5px; /* Adjust positioning */
+    right: -10px; /* Adjust positioning */
+    background-color: #ff0000; /* Red background for alerts */
+    color: #ffffff; /* White text color */
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ffffff; /* White border for contrast */
+}
+
   </style>
   
 </head>
@@ -659,7 +703,10 @@
     <div class="brand-name"> WIESEL</div>
     
     <div class="nav-icons">
-      <i data-feather="bell"></i>
+      <a href="#" class="nav-item notification-container">
+        <i data-feather="bell"></i>
+        <span class="circle-indicator">8</span>
+    </a>
       <i data-feather="bookmark"></i>
     </div>
     <div class="dropdown-menu">
@@ -711,7 +758,7 @@
       </div>
   
       <!-- Image -->
-      <img style="left: 0; right: 0;" src="images/cake.jpg" alt="Content Image">
+      <img style="left: 0; right: 0;" src="images/cake.JPG" alt="Content Image">
   
       <!-- Icon Row -->
       <div class="icons-row">
@@ -820,7 +867,7 @@
       <!-- Top Row -->
       <div class="top-row">
         <div class="user-info">
-          <img  style=" margin-left: 3px; border-radius: 50px; height: 40px; width: 40px;" src="images/person_4.jpg" alt="User Image">
+          <img  style=" margin-left: 3px; border-radius: 50px; height: 40px; width: 40px;" src="images/women.jpg" alt="User Image">
           <span>Dave3wuyy</span>
         </div>
         <div class="top-icons">
@@ -831,7 +878,7 @@
       </div>
   
       <!-- Image -->
-      <img style="left: 0; right: 0;" src="images/women.JPG" alt="Content Image">
+      <img style="left: 0; right: 0;" src="images/Air.JPG" alt="Content Image">
   
       <!-- Icon Row -->
       <div class="icons-row">
@@ -947,9 +994,11 @@
   <a href="#" class="nav-item">
     <i data-feather="plus"></i>
   </a>
-  <a href="#" class="nav-item">
+  <a href="#" class="nav-item shopping-bag-container">
     <i data-feather="shopping-bag"></i>
-  </a>
+    <span class="circle-indicator">3</span>
+</a>
+
   <a href="#" class="nav-item">
     <i data-feather="user"></i>
   </a>
